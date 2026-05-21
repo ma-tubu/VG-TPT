@@ -10,7 +10,7 @@
 ---
 
 <p align="center">
-  <img src="image/figure_1.png" width="920" alt="VG-TPT Framework">
+  <img src="image/figure_2.png" width="920" alt="VG-TPT Framework">
 </p>
 
 <div align="center">
