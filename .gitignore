@@ -1,0 +1,40 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Virtual environments
+venv/
+env/
+ENV/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Pretrained weights (large files)
+pretrained/*.pth
+pretrained/**/*.bin
+
+# Logs and outputs
+logs/
+*.out
+*.log
+
+# Data (do not commit large datasets)
+moseidata/
+Full_mosei_process/
+
+# Paper artifacts (not code)
+*.pdf
+*.tex
+*.bib
+mmsp_figure_*.png
+
+# OS
+.DS_Store
+Thumbs.db
