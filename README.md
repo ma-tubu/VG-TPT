@@ -135,22 +135,63 @@ Code and detailed reproduction instructions will be released soon.
 ### ⚙️ Environment Setup
 
 ```bash
-# Coming soon
+# Create conda environment
+conda create -n vgtpt python=3.10
+conda activate vgtpt
+
+# Install PyTorch (adjust CUDA version as needed)
+conda install pytorch torchvision pytorch-cuda=11.8 -c pytorch -c nvidia
+
+# Install remaining dependencies
+pip install -r requirements.txt
 ```
 
 ### 🗂️ Data Preparation
 
-```bash
-# Coming soon
+Download pretrained weights and place them under `pretrained/`:
+
+| Model | Expected Path |
+|-------|---------------|
+| [BERT base uncased](https://huggingface.co/google-bert/bert-base-uncased) | `pretrained/bert-base-uncased/` |
+| [Swin-Base 22K](https://github.com/microsoft/Swin-Transformer) | `pretrained/swin_base_patch4_window7_224_22k.pth` |
+
+The dataset should follow this structure:
+
 ```
+data_root/
+  train.jsonl
+  val.jsonl
+  test.jsonl
+  labels.txt
+  images/
+    vid_seg.jpg
+```
+
+Each `.jsonl` line:
+
+```json
+{
+  "text": "utterance text",
+  "label": 3,
+  "img": "images/vid_seg.jpg",
+  "meta": { "vid": "video_id", "seg": "segment_id", "score": 0.0 }
+}
+```
+
+Optional: use `utils/preprocessing/` scripts to build the dataset from raw CMU-MOSEI data.
 
 ### 🏋️ Training
 
 ```bash
-# Coming soon
+python main_visual_text_classify.py \
+    --data_root ./data \
+    --dataset mosei \
+    --regression \
+    --fusion_method vg_tpt \
+    --batch-size 32 \
+    --text_prompt_length 10 \
+    --max_epoch 20
 ```
-
----
 
 ## 📚 Citation
 
